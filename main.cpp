@@ -9,17 +9,17 @@
 using namespace std;
 using namespace std::chrono;
 
-BST insertToBST(ifstream& f, string x){
-    BST bst = BST();
+BST* insertToBST(ifstream& f, string x){
+    BST *bst = new BST();
     auto start = high_resolution_clock::now();
     while (getline(f, x, '\n')) {
-       bst.put(stoi(x),stoi(x)  );
+       bst->put(stoi(x),stoi(x)  );
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "BST insertion time " << duration.count() << endl;
-    cout << "BST height " << bst.height() << endl;
-    cout << "BST size " << bst.size() << endl;
+    cout << "BST height " << bst->height() << endl;
+    cout << "BST size " << bst->size() << endl;
     return bst;
 }
 
@@ -52,16 +52,16 @@ SplayTree insertToSplayTree(ifstream& f, string x){
     return  splayTree;
 
 }
-void deleteFromBST(BST bst, ifstream& f, string x){
+void deleteFromBST(BST* bst, ifstream& f, string x){
     auto start = high_resolution_clock::now();
     while (getline(f, x, '\n')) {
-        bst.del(stoi(x));
+        bst->del(stoi(x));
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "BST deletion time " << duration.count() << endl;
-    cout << "BST height after deletion " << bst.height() << endl;
-    cout << "BST size after deletion " << bst.size() << endl;
+    cout << "BST height after deletion " << bst->height() << endl;
+    cout << "BST size after deletion " << bst->size() << endl;
 
 }
 
@@ -91,16 +91,16 @@ void deleteFromSplayTree(SplayTree splayTree,ifstream& f, string x){
 
 }
 
-void searchBST(BST bst, string x, ifstream& f){
+void searchBST(BST* bst, string x, ifstream& f){
     auto start = high_resolution_clock::now();
     while (getline(f, x, '\n')) {
-        bst.get(stoi(x));
+        bst->get(stoi(x));
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "BST search time " << duration.count() << endl;
-    cout << "BST height after search " << bst.height() << endl;
-    cout << "BST size after search " << bst.size() << endl;
+    cout << "BST height after search " << bst->height() << endl;
+    cout << "BST size after search " << bst->size() << endl;
 
 }
 
@@ -159,11 +159,11 @@ int main() {
 //    }
 //    cout<< input1.size() << endl;
 
-//    BST bst1 = insertToBST(file1,x);
-//    searchBST(bst1,x,file3);
-//    deleteFromBST(bst1,file4,x);
-//    cout << '\n';
-//
+    BST *bst1 = insertToBST(file1,x);
+    searchBST(bst1,x,file3);
+    deleteFromBST(bst1,file4,x);
+    cout << '\n';
+
 //    BST bst2 = insertToBST(file2,x);
 //    searchBST(bst2,x,file3);
 //    deleteFromBST(bst2,file4,x);
@@ -184,10 +184,10 @@ int main() {
 //    deleteFromSplayTree(splayTree1,file4,x);
 //    cout << '\n';
 
-    SplayTree splayTree2 = insertToSplayTree(file2,x);
-    searchSplayTree(splayTree2,x,file3);
-    deleteFromSplayTree(splayTree2,file4,x);
-    cout << '\n';
+//    SplayTree splayTree2 = insertToSplayTree(file2,x);
+//    searchSplayTree(splayTree2,x,file3);
+//    deleteFromSplayTree(splayTree2,file4,x);
+//    cout << '\n';
 
 
 
