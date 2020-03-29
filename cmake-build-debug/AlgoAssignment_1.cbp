@@ -80,6 +80,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Piyumal Anthony/CLionProjects/AlgoAssignment-1/SplayTree.h">
+			<Option target="AlgoAssignment_1"/>
+		</Unit>
 		<Unit filename="C:/Users/Piyumal Anthony/CLionProjects/AlgoAssignment-1/main.cpp">
 			<Option target="AlgoAssignment_1"/>
 		</Unit>

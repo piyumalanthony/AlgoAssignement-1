@@ -6,7 +6,6 @@ public:
     SplayTree();
     bool contains(int key);
     void put(int key, int val);
-    int search(int key) ;
     void del(int key);
     size_t height(void) const;
     size_t size(void) const;
@@ -31,8 +30,8 @@ struct SplayTree::Node {
     Node* left;
     Node* right;
 
-    Node(int key, int val) 
-        : key(key), val(val), left(nullptr), right(nullptr) {}
+    Node(int key, int val)
+            : key(key), val(val), left(nullptr), right(nullptr) {}
 };
 
 SplayTree::SplayTree() : root(nullptr) {}
@@ -194,14 +193,3 @@ void SplayTree::print_in_order(Node* x) const {
         print_in_order(x->right);
     }
 }
-
-int SplayTree::search(int key)  {
-    Node* n = get( key);
-    if(n == nullptr) {
-        throw new std::runtime_error("Key not found");
-    }
-    return n->val;
-}
-
-
-

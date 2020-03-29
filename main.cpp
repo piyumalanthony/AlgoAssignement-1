@@ -38,17 +38,17 @@ RBTree  insertToRBTree(ifstream& f, string x){
 
 }
 
-SplayTree insertToSplayTree(ifstream& f, string x){
-    SplayTree splayTree;
+SplayTree* insertToSplayTree(ifstream& f, string x){
+    SplayTree* splayTree = new  SplayTree();
     auto start = high_resolution_clock::now();
     while (getline(f, x, '\n')) {
-        splayTree.put(stoi(x),stoi(x) );
+        splayTree->put(stoi(x),stoi(x) );
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "SplayTree insertion time " << duration.count() << endl;
-    cout << "SplayTree height " << splayTree.height() << endl;
-    cout << "SplayTree size " << splayTree.size() << endl;
+    cout << "SplayTree height " << splayTree->height() << endl;
+    cout << "SplayTree size " << splayTree->size() << endl;
     return  splayTree;
 
 }
@@ -78,16 +78,16 @@ void deleteFromRBTree(RBTree rbTree, ifstream& f, string x){
 
 }
 
-void deleteFromSplayTree(SplayTree splayTree,ifstream& f, string x){
+void deleteFromSplayTree(SplayTree* splayTree,ifstream& f, string x){
     auto start = high_resolution_clock::now();
     while (getline(f, x, '\n')) {
-        splayTree.del(stoi(x));
+        splayTree->del(stoi(x));
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "SplayTree deletion time " << duration.count() << endl;
-    cout << "SplayTree height after deletion " << splayTree.height() << endl;
-    cout << "SplayTree size after deletion " << splayTree.size() << endl;
+    cout << "SplayTree height after deletion " << splayTree->height() << endl;
+    cout << "SplayTree size after deletion " << splayTree->size() << endl;
 
 }
 
@@ -117,16 +117,16 @@ void searchRBTree(RBTree rbTree, string x, ifstream& f){
 
 }
 
-void searchSplayTree(SplayTree splayTree,  string x, ifstream& f){
+void searchSplayTree(SplayTree* splayTree,  string x, ifstream& f){
     auto start = high_resolution_clock::now();
     while (getline(f, x, '\n')) {
-        splayTree.search(stoi(x));
+        splayTree->contains(stoi(x));
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start);
     cout << "SplayTree search time " << duration.count() << endl;
-    cout << "SplayTree height after search " << splayTree.height() << endl;
-    cout << "SplayTree size after search " << splayTree.size() << endl;
+    cout << "SplayTree height after search " << splayTree->height() << endl;
+    cout << "SplayTree size after search " << splayTree->size() << endl;
 
 }
 
@@ -159,10 +159,10 @@ int main() {
 //    }
 //    cout<< input1.size() << endl;
 
-    BST *bst1 = insertToBST(file1,x);
-    searchBST(bst1,x,file3);
-    deleteFromBST(bst1,file4,x);
-    cout << '\n';
+//    BST *bst1 = insertToBST(file1,x);
+//    searchBST(bst1,x,file3);
+//    deleteFromBST(bst1,file4,x);
+//    cout << '\n';
 
 //    BST bst2 = insertToBST(file2,x);
 //    searchBST(bst2,x,file3);
@@ -179,13 +179,13 @@ int main() {
 //    deleteFromRBTree(rbTree2,file4,x);
 //    cout << '\n';
 
-//    SplayTree splayTree1 = insertToSplayTree(file1,x);
-//    searchSplayTree(splayTree1,x,file3);
-//    deleteFromSplayTree(splayTree1,file4,x);
-//    cout << '\n';
+    SplayTree *splayTree1 = insertToSplayTree(file1,x);
+    searchSplayTree(splayTree1,x,file3);
+    deleteFromSplayTree(splayTree1,file4,x);
+    cout << '\n';
 
 //    SplayTree splayTree2 = insertToSplayTree(file2,x);
-//    searchSplayTree(splayTree2,x,file3);
+//    //searchSplayTree(splayTree2,x,file3);
 //    deleteFromSplayTree(splayTree2,file4,x);
 //    cout << '\n';
 
